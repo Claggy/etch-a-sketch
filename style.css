@@ -24,7 +24,7 @@ body {
     background-color: #9f9f9f;
 }
 
-#reset {
-    border: 2px solid black;
+#clear, #gridSize {
+    border: 1px solid black;
     padding-bottom: 1px;    
 }

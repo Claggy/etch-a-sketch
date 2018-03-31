@@ -1,7 +1,9 @@
 let gridNum = 16;
+let color = 'gray';
 const container = document.querySelector('#container');
 const clear = document.querySelector('#clear');
 const gridSize = document.querySelector('#gridSize');
+
 
 function gridCreate() {
     for (let i = 0; i < gridNum; i++) {
@@ -20,7 +22,7 @@ function gridCreate() {
 
 function clearGrid(grid) {
     clear.addEventListener('click', () => {
-        grid.classList.remove('gridHover');
+        grid.style.backgroundColor = '#f3f3f3';
     });
 }
 
@@ -47,9 +49,26 @@ function newGridNum() {
     }
 }
 
+function randomColor() {
+    let r = Math.floor(Math.random() * 256);
+    let g = Math.floor(Math.random() * 256);
+    let b = Math.floor(Math.random() * 256);
+    return `rgb(${r}, ${g}, ${b})`;
+}
+
+function changeColor() {
+    color = document.querySelector('#color').value;
+    if (color === 'random') {
+        return randomColor();
+    } else {
+        return color;
+    }
+}
+
 function gridHover(grid) {
+    color = document.querySelector('#color').value;
     grid.addEventListener('mouseover', () => {
-        grid.classList.add('gridHover');
+        grid.style.backgroundColor = changeColor();
     });
 }
 
