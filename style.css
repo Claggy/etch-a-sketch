@@ -8,20 +8,14 @@ body {
     border: 2px dotted black;
     margin: 0 auto;
     font-size: 0;
-    padding: 1px 0 0 1px;
+    padding: 1px 1px 1px 1px;
     overflow: hidden;
 }
 
 .grid {
     float: left;
-    background-color: #f3f3f3;
-    border-bottom: 1px solid white;
-    border-right: 1px solid white;
+    background-color: white;
     box-sizing: border-box;
-}
-
-.gridHover {
-    background-color: #9f9f9f;
 }
 
 #clear, #gridSize {

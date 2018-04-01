@@ -1,5 +1,6 @@
 let gridNum = 16;
 let color = 'gray';
+let opacity = '100%';
 const container = document.querySelector('#container');
 const clear = document.querySelector('#clear');
 const gridSize = document.querySelector('#gridSize');
@@ -21,9 +22,8 @@ function gridCreate() {
 }
 
 function clearGrid(grid) {
-    clear.addEventListener('click', () => {
-        grid.style.backgroundColor = '#f3f3f3';
-    });
+    clear.addEventListener('click', removeGrid);
+    clear.addEventListener('click', gridCreate);
 }
 
 function newGrid() {
@@ -65,11 +65,30 @@ function changeColor() {
     }
 }
 
+function changeOpacity(grid) {
+    opacity = document.querySelector('#opacity').value;
+    let op = 0;
+    grid.addEventListener('mouseover', () => {
+        opacity = document.querySelector('#opacity').value;
+        if (opacity === '100%') {
+            op = 1;
+            grid.style.opacity = 1.0;
+        } else if (opacity === '10%') {
+            if (op < 1) {
+                op += 0.1;
+                grid.style.opacity = op;
+            } else {
+                return;
+            }
+        }
+    });
+}
+
 function gridHover(grid) {
-    color = document.querySelector('#color').value;
     grid.addEventListener('mouseover', () => {
         grid.style.backgroundColor = changeColor();
     });
+    changeOpacity(grid);
 }
 
 gridCreate();
