@@ -15,10 +15,15 @@ function gridCreate() {
             grid.setAttribute('style', `width: ${gridSize}; height: ${gridSize}`);
             container.appendChild(grid);
             gridHover(grid);
-            newGrid();
             clearGrid(grid);
+            newGrid();
         }
     }
+}
+
+function gridHover(grid) {
+    changeColor(grid);
+    changeOpacity(grid);
 }
 
 function clearGrid(grid) {
@@ -56,17 +61,18 @@ function randomColor() {
     return `rgb(${r}, ${g}, ${b})`;
 }
 
-function changeColor() {
-    color = document.querySelector('#color').value;
-    if (color === 'random') {
-        return randomColor();
-    } else {
-        return color;
-    }
+function changeColor(grid) {
+    grid.addEventListener('mouseover', () => { 
+        color = document.querySelector('#color').value;
+        if (color === 'random') {
+            grid.style.backgroundColor = randomColor();
+        } else {
+            grid.style.backgroundColor = color;
+        }
+    });
 }
 
 function changeOpacity(grid) {
-    opacity = document.querySelector('#opacity').value;
     let op = 0;
     grid.addEventListener('mouseover', () => {
         opacity = document.querySelector('#opacity').value;
@@ -82,13 +88,6 @@ function changeOpacity(grid) {
             }
         }
     });
-}
-
-function gridHover(grid) {
-    grid.addEventListener('mouseover', () => {
-        grid.style.backgroundColor = changeColor();
-    });
-    changeOpacity(grid);
 }
 
 gridCreate();
