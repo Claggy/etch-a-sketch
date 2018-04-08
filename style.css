@@ -9,6 +9,7 @@ body {
     margin: 0 auto;
     font-size: 0;
     overflow: hidden;
+    margin-top: 10px;
 }
 
 .grid {
